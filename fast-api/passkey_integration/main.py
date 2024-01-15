@@ -1,4 +1,5 @@
 from typing import List
+import uvicorn
 from corbado_python_sdk.entities.session_validation_result import (
     SessionValidationResult,
 )
@@ -77,5 +78,5 @@ async def get_profile(request: Request):
 
 
 if __name__ == "__main__":
-    pass
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
