@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.css"
+      />
+      <script src="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.js"></script>
+    </head>
+    <body>
+
+      <!-- Define passkey-list div and logout button -->
+    <h2>:/protected 🔒</h2>
+    <p>User ID: {{USER_ID}}</p>
+    <p>Name: {{USER_NAME}}</p>
+    <p>Email: {{USER_EMAIL}}</p>
+    <div id="passkey-list"></div>
+    <button id="logoutButton">Logout</button>
+
+
+    <!-- Script to load Corbado and mount PasskeyList UI -->
+    <script>
+ (async () => {
+            await Corbado.load({
+                projectId: "{{ PROJECT_ID }}",
+                darkMode: "off",
+                setShortSessionCookie: "true" // set short session cookie automatically
+ });
+
+            // Get and mount PasskeyList UI
+            const passkeyListElement = document.getElementById("passkey-list"); // Element where you want to render PasskeyList UI
+            Corbado.mountPasskeyListUI(passkeyListElement);
+
+            // Get the logout button
+            const logoutButton = document.getElementById('logoutButton');
+            // Add event listener to logout button
+ logoutButton.addEventListener('click', function() {
+              Corbado.logout()
+ .then(() => {
+                        window.location.replace("/");
+ })
+ .catch(err => {
+                        console.error(err);
+ });
+ });
+ })();
+    </script>
+
+
+</body>
+</html>
