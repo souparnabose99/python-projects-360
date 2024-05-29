@@ -4,9 +4,14 @@ import to_do_functions as tdf
 label = fsg.Text("Type in a To-Do item")
 input_box = fsg.InputText(tooltip="Enter an item", key="todo")
 add_button = fsg.Button("Add")
+list_box = fsg.Listbox(values=tdf.get_todos(),
+                       key="items",
+                       enable_events=True,
+                       size=(50, 7))
+edit_button = fsg.Button("Edit")
 
 todo_display_window = fsg.Window("To-Do Application",
-                                 layout=[[label], [input_box, add_button]],
+                                 layout=[[label], [input_box, add_button], [list_box, edit_button]],
                                  font=("Helvetica", 15))
 
 while True:
@@ -14,12 +19,27 @@ while True:
     print(event)
     print(values)
     match event:
+
         case "Add":
             todos = tdf.get_todos()
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
             tdf.write_todos(todos)
+            todo_display_window["items"].update(values=todos)
+
         case fsg.WINDOW_CLOSED:
             break
+
+        case "items":
+            todo_display_window["todo"].update(value=values["items"][0])
+
+        case "Edit":
+            todo_to_edit = values["items"][0]
+            new_todo = values["todo"]
+            todos = tdf.get_todos()
+            index = todos.index(todo_to_edit)
+            todos[index] = new_todo
+            tdf.write_todos(todos)
+            todo_display_window["items"].update(values=todos)
 
 todo_display_window.close()
