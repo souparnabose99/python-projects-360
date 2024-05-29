@@ -19,7 +19,7 @@ while True:
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
             tdf.write_todos(todos)
-
-
+        case fsg.WINDOW_CLOSED:
+            break
 
 todo_display_window.close()
