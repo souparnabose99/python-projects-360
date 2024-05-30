@@ -2,7 +2,8 @@ import time
 import FreeSimpleGUI as fsg
 import to_do_functions as tdf
 
-fsg.theme("White")
+fsg.theme_previewer()
+fsg.theme("DarkBrown")
 
 label = fsg.Text("Type in a To-Do item")
 input_box = fsg.InputText(tooltip="Enter an item", key="todo")
@@ -12,9 +13,14 @@ list_box = fsg.Listbox(values=tdf.get_todos(),
                        enable_events=True,
                        size=(50, 7))
 edit_button = fsg.Button("Edit")
+complete_button = fsg.Button("Complete")
+exit_button = fsg.Button("Exit")
 
 todo_display_window = fsg.Window("To-Do Application",
-                                 layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                                 layout=[[label],
+                                         [input_box, add_button],
+                                         [list_box, edit_button, complete_button],
+                                         [exit_button]],
                                  font=("Helvetica", 15))
 
 while True:
