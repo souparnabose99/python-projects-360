@@ -1,5 +1,8 @@
+import time
 import FreeSimpleGUI as fsg
 import to_do_functions as tdf
+
+fsg.theme("White")
 
 label = fsg.Text("Type in a To-Do item")
 input_box = fsg.InputText(tooltip="Enter an item", key="todo")
