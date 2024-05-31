@@ -14,7 +14,7 @@ list_box = fsg.Listbox(values=tdf.get_todos(),
                        enable_events=True,
                        size=(50, 7))
 edit_button = fsg.Button("Edit")
-complete_button = fsg.Button("Complete")
+complete_button = fsg.Button("Delete")
 exit_button = fsg.Button("Exit")
 
 todo_display_window = fsg.Window("To-Do Application",
@@ -26,7 +26,8 @@ todo_display_window = fsg.Window("To-Do Application",
                                  font=("Helvetica", 15))
 
 while True:
-    event, values = todo_display_window.read()
+    event, values = todo_display_window.read(timeout=200)
+    todo_display_window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     print(event)
     print(values)
     match event:
