@@ -5,6 +5,7 @@ import to_do_functions as tdf
 fsg.theme_previewer()
 fsg.theme("DarkBrown")
 
+clock = fsg.Text('', key='clock')
 label = fsg.Text("Type in a To-Do item")
 input_box = fsg.InputText(tooltip="Enter an item", key="todo")
 add_button = fsg.Button("Add")
@@ -17,7 +18,8 @@ complete_button = fsg.Button("Complete")
 exit_button = fsg.Button("Exit")
 
 todo_display_window = fsg.Window("To-Do Application",
-                                 layout=[[label],
+                                 layout=[[clock],
+                                         [label],
                                          [input_box, add_button],
                                          [list_box, edit_button, complete_button],
                                          [exit_button]],
