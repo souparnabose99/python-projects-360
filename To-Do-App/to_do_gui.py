@@ -2,7 +2,7 @@ import time
 import FreeSimpleGUI as fsg
 import to_do_functions as tdf
 
-fsg.theme_previewer()
+# fsg.theme_previewer()
 fsg.theme("DarkBrown")
 
 clock = fsg.Text('', key='clock')
@@ -65,8 +65,11 @@ while True:
                 index = todos.index(todo_to_edit)
                 todos[index] = new_todo
                 tdf.write_todos(todos)
-                todo_display_window['todos'].update(values=todos)
+                todo_display_window["items"].update(values=todos)
             except IndexError:
                 fsg.popup("Please select an item first.", font=("Helvetica", 20))
+
+        case "Exit":
+            break
 
 todo_display_window.close()
