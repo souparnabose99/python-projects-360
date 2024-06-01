@@ -45,6 +45,17 @@ while True:
         case "items":
             todo_display_window["todo"].update(value=values["items"][0])
 
+        case "Delete":
+            try:
+                todo_to_complete = values["items"][0]
+                todos = tdf.get_todos()
+                todos.remove(todo_to_complete)
+                tdf.write_todos(todos)
+                todo_display_window["items"].update(values=todos)
+                todo_display_window["todo"].update(value="")
+            except IndexError:
+                fsg.popup("Please select an item first.", font=("Helvetica", 20))
+
         case "Edit":
             try:
                 todo_to_edit = values["items"][0]
