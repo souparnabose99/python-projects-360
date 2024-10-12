@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.write("Streamlit Introduction")
 st.title("Streamlit")
@@ -14,3 +15,5 @@ btn_2 = st.button("Func-2")
 print(btn_2)
 
 st.divider()
+
+st.image(os.path.join(os.getcwd(), "static", "bg_1.jpg"))
