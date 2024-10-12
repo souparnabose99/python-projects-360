@@ -12,3 +12,5 @@ print(btn_1)
 
 btn_2 = st.button("Func-2")
 print(btn_2)
+
+st.divider()
