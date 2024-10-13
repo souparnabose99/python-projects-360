@@ -6,6 +6,9 @@ import pandas as pd
 st.write("Data Elements")
 st.title("Streamlit Data Elements")
 st.header("Data Elements")
+st.divider()
+
+st.subheader("Static Table")
 df = pd.DataFrame(
     {
         "Countries": ["Albania", "Bayern", "Croatia", "Denmark", "England"],
@@ -14,7 +17,6 @@ df = pd.DataFrame(
     }
 )
 
-st.divider()
-
 st.dataframe(df)
+st.divider()
 
