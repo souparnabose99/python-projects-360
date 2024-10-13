@@ -20,3 +20,12 @@ df = pd.DataFrame(
 st.dataframe(df)
 st.divider()
 
+st.subheader("Editable Table")
+df_edit = st.data_editor(df)
+
+st.divider()
+st.subheader("Metrics")
+st.metric("Total Rows: ", len(df))
+st.metric("Average Independence Years: ", np.round(df["Independence Years"].mean(), 1))
+
+
