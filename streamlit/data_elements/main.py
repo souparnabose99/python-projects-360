@@ -28,4 +28,17 @@ st.subheader("Metrics")
 st.metric("Total Rows: ", len(df))
 st.metric("Average Independence Years: ", np.round(df["Independence Years"].mean(), 1))
 
+st.divider()
 
+st.subheader("Json & Dictionary:")
+
+dict_1 = {
+        "Countries": ["Albania", "Bayern"],
+        "Languages": ["Albanian", "German"],
+        "Independence Years": [45, 61]
+    }
+
+st.json(dict_1)
+
+st.write("Dictionary View: ", dict_1)
+st.divider()
