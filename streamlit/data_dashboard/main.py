@@ -9,5 +9,9 @@ st.divider()
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
 if uploaded_file is not None:
-    st.write("File Uploaded...")
+    df = pd.read_csv(uploaded_file)
+    st.subheader("Data Preview")
+    st.write(df.head())
 
+    st.subheader("Data Summary")
+    st.write(df.describe())
