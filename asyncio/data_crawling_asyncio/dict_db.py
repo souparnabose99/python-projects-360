@@ -27,3 +27,10 @@ class DictDB:
             self.data[key][data.id] = data
         except Exception as exe:
             print(f"Error saving item: {exe}")
+
+    async def save_user(self, *, data):
+        try:
+            data = User(**data)
+            self.data['user'][data.id] = data
+        except Exception as exe:
+            print(f"Error saving user: {exe}")
