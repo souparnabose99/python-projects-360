@@ -48,3 +48,5 @@ async def stop(queue, q):
 async def stop_queue(queue):
     queue.cancel()
 
+asyncio.run(main())
+
