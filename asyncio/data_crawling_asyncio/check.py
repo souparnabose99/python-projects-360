@@ -45,4 +45,6 @@ async def stop(queue, q):
     # signal.raise_signal(signal.SIGINT)
 
 
+async def stop_queue(queue):
+    queue.cancel()
 
