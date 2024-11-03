@@ -38,3 +38,11 @@ async def main():
         print('timeout', end - st)
 
 
+async def stop(queue, q):
+    await asyncio.sleep(15)
+    print('stopping queue', q.qsize())
+    queue.cancel()
+    # signal.raise_signal(signal.SIGINT)
+
+
+
