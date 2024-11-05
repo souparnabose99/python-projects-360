@@ -29,3 +29,30 @@ class Story(Item):
     url: str = 'https://news.ycombinator.com/'
     text: str = ''
     score: int = 0
+
+
+@dataclass
+class Job(Item):
+    title: str = ''
+    text: str = ''
+    score: int = 0
+    url: str = 'https://news.ycombinator.com/'
+
+
+@dataclass
+class Comment(Item):
+    parent: int = 0
+    text: str = ''
+
+
+@dataclass
+class User:
+    id: str
+    created: int
+    karma: int = 0
+    about: str = ''
+    delay: int = 0
+    submitted: list[int] = field(default_factory=list)
+
+    def __str__(self):
+        return f'{self.id}'
