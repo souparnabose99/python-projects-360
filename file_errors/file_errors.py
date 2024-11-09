@@ -11,6 +11,8 @@ def open_file():
         file.close()
     except FileNotFoundError:
         print(f"{path} does not exist")
+    except Exception as e:
+        print(f"Unexpected error occurred : {e}")
 
 
 def main():
