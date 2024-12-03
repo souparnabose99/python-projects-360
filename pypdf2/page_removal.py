@@ -1,7 +1,16 @@
 from PyPDF2 import PdfReader, PdfWriter
 
 
-def remove_selective_pdf_pages(input_pdf_path, output_pdf_path, pages_to_remove):
+def remove_selective_pdf_pages(input_path, output_path, page_list):
+    """
+    Removing selective pdf pages using pypdf2
+    args:
+        input_path: [str]: Path to input file
+        output_path: [str]: Path to output file
+        page_list: [list]: List of pages to remove
+    return:
+        None
+    """
     # open the original PDF
     reader = PdfReader(input_pdf_path)
     writer = PdfWriter()
