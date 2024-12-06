@@ -8,3 +8,5 @@ conn = Connection(
     config=config
 )
 
+conn.run("ping -c 2 www.google.com")
+
