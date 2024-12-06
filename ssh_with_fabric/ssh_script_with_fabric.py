@@ -9,4 +9,5 @@ conn = Connection(
 )
 
 conn.run("ping -c 2 www.google.com")
+conn.sudo("systemctl restart nfs-kernel-server")
 
