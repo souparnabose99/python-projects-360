@@ -15,3 +15,6 @@ conn.sudo("systemctl restart nfs-kernel-server")
 conn.get("remote_file_path", "local_file_path")
 conn.put("local_file_path", "remote_file_path")
 
+
+conn.sudo("mv remote_file_path root_location_path")
+
