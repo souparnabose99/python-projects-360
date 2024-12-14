@@ -16,18 +16,14 @@ class RequestBody(BaseModel):
 
 
 iris = load_iris()
-
-
 X = iris.data
 Y = iris.target
-
-
 clf = GaussianNB()
 clf.fit(X, Y)
 
 
 @app.post('/predict')
-def predict(data: request_body):
+def predict(data: RequestBody):
     test_data = [[
         data.sepal_length,
         data.sepal_width,
