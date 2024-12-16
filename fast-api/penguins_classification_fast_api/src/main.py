@@ -28,3 +28,20 @@ async def root():
     }
 
 
+@app.get("/predict/")
+async def predict(bill_length_mm: float = 0.0, flipper_length_mm: float = 0.0):
+    param = {
+                "bill_length_mm": bill_length_mm,
+                "flipper_length_mm": flipper_length_mm
+            }
+    if bill_length_mm <= 0.0 or flipper_length_mm <= 0.0:
+        return {
+            "parameters": param,
+            "error message": "Invalid input values",
+        }
+    else:
+        result = clf.predict([[bill_length_mm, flipper_length_mm]])
+        return {
+            "parameters": param,
+            "result": le.inverse_transform(result)[0],
+        }
