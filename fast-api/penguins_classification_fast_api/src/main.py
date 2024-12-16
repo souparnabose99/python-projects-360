@@ -10,3 +10,12 @@ data = pd.read_csv(r"data\input\penguins_lter.csv")
 data = data.dropna()
 le = preprocessing.LabelEncoder()
 
+X = data[["bill_length_mm", "flipper_length_mm"]]
+le.fit(data["species"])
+y = le.transform(data["species"])
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=0)
+clf = Pipeline(
+    steps=[("scaler", StandardScaler()), ("knn", KNeighborsClassifier(n_neighbors=11))]
+)
+clf.set_params().fit(X_train, y_train)
+
