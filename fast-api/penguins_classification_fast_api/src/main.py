@@ -19,3 +19,12 @@ clf = Pipeline(
 )
 clf.set_params().fit(X_train, y_train)
 
+
+@app.get("/")
+async def root():
+    return {
+        "Name": "Penguins Classifier",
+        "description": "This is a model to classify different classes of penguins based on bill length and flipper length of the bird.",
+    }
+
+
